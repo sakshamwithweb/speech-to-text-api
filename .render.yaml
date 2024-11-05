@@ -1,0 +1,7 @@
+version: 1
+services:
+  - type: web
+    name: speech-to-text-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
