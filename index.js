@@ -107,7 +107,7 @@ const step3 = async (apiKey, AUDIO_URL, langg) => {
                 }
                 reject(new Error("jobId not found in the response"));
             } else {
-                reject(new Error(`Error: ${res.text}`));//,error: ${errorData.message}
+                reject(new Error(`Error: ${errorData.message}`));//,error: ${res.text}
             }
         } catch (error) {
             console.error("Error in step3:", error);
