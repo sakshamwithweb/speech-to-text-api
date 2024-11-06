@@ -66,8 +66,7 @@ const step3 = async (apiKey, AUDIO_URL, langg) => {
                     "myshell-service-name": "organics-api",
                     "priority": "u=1, i",
                     "Referer": "https://app.myshell.ai/",
-                    "Referrer-Policy": "strict-origin-when-cross-origin",
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36",
+                    "Referrer-Policy": "strict-origin-when-cross-origin"
                 },
                 body: JSON.stringify({
                     "widgetId": "1781991624332992512",
@@ -108,7 +107,10 @@ const step3 = async (apiKey, AUDIO_URL, langg) => {
                 }
                 reject(new Error("jobId not found in the response"));
             } else {
-                reject(new Error(`Error: ${res}`))
+                reject(new Error(`Failed with status code: ${res}`));
+                res.json().then(errorData => {
+                    console.log(`Failed with status code: ${res.status}, error: ${errorData.message}`);
+                });
             }
         } catch (error) {
             console.error("Error in step3:", error);
